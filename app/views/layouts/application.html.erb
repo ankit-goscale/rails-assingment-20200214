@@ -48,8 +48,9 @@
         <a class="navbar-brand" href="#">Twitter Like</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", "/path1"  %></li>
-            <li><%= link_to "Link2", "/path2"  %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to 'New Tweet', new_tweet_path %></li>
+            <% end %>
           </ul>
 
           <ul class="nav navbar-nav pull-right">

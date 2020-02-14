@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   has_many :tweets, dependent: :destroy
   has_many :followers, foreign_key: :follower_id
   has_many :followings, foreign_key: :following_id
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
