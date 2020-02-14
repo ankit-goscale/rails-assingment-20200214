@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: dev
+  password: 123
+  pool: 5
+
+development:
+  <<: *default
+  database: test-assingment_development
+
+# test:
+#   <<: *default
+#   database: test-assingment_test
+
+production:
+  <<: *default
+  database: test-assingment_production
