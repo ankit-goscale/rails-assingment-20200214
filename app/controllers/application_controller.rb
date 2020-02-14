@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!, if: :authenticate?
 
+  protected
+  def after_sign_in_path_for(user)
+    tweets_path
+  end
+
+  def after_sign_out_path_for(user)
+    root_path
+  end
 
   private
   def authenticate?
