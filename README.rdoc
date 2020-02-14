@@ -9,6 +9,10 @@ Things you may want to cover:
 
 * Rails version : 4.2.10
 
+* Configure Database
+
+  replace username and password details for database config in file config/database.yml
+
 * Execute following commands to setup application
 
   $ bundle install
