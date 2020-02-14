@@ -24,3 +24,11 @@ Things you may want to cover:
 * For dummy users run seed file
 
   $ rake db:seed
+
+* User login information
+  
+  e-mail for every seed user is in pattern
+  # email : user{number}@example.com
+  
+  every user has default password
+  # password : 12345678
