@@ -1,0 +1,27 @@
+<h1>Listing Users</h1>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>E-mail</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.full_name.titleize, user %></td>
+        <td><%= user.email %></td>
+        <td>
+          <% unless user.follower?(current_user) %>
+            <%= link_to 'Follow', follow_path(user), method: :post, class: 'btn btn-info' %>
+          <% else %>
+            <%= link_to 'Un-follow', unfollow_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-info' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

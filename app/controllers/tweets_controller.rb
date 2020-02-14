@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
-    @tweets = Tweet.all.order(created_at: :desc)
+    @tweets = current_user.tweets
   end
 
   # GET /tweets/1
@@ -14,7 +14,7 @@ class TweetsController < ApplicationController
 
   # GET /tweets/new
   def new
-    @tweet = current_user.tweets.build
+    @tweet = current_user.own_tweets.build
   end
 
   # GET /tweets/1/edit
@@ -24,7 +24,7 @@ class TweetsController < ApplicationController
   # POST /tweets
   # POST /tweets.json
   def create
-    @tweet = current_user.tweets.build(tweet_params)
+    @tweet = current_user.own_tweets.build(tweet_params)
 
     respond_to do |format|
       if @tweet.save
@@ -64,7 +64,7 @@ class TweetsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tweet
-      @tweet = current_user.tweets.find(params[:id])
+      @tweet = current_user.own_tweets.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
